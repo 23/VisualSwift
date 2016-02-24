@@ -1,0 +1,14 @@
+PODS:
+  - VisualSwift (0.1.0)
+
+DEPENDENCIES:
+  - VisualSwift (from `../`)
+
+EXTERNAL SOURCES:
+  VisualSwift:
+    :path: ../
+
+SPEC CHECKSUMS:
+  VisualSwift: acf1e1298441c5eeb54d69cf360334ad61f94976
+
+COCOAPODS: 0.39.0

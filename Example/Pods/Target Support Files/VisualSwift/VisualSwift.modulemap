@@ -1,0 +1,6 @@
+framework module VisualSwift {
+  umbrella header "VisualSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
