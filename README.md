@@ -1,11 +1,10 @@
 # VisualSwift
 
-[![CI Status](http://img.shields.io/travis/Kalle Kabell/VisualSwift.svg?style=flat)](https://travis-ci.org/Kalle Kabell/VisualSwift)
 [![Version](https://img.shields.io/cocoapods/v/VisualSwift.svg?style=flat)](http://cocoapods.org/pods/VisualSwift)
 [![License](https://img.shields.io/cocoapods/l/VisualSwift.svg?style=flat)](http://cocoapods.org/pods/VisualSwift)
 [![Platform](https://img.shields.io/cocoapods/p/VisualSwift.svg?style=flat)](http://cocoapods.org/pods/VisualSwift)
 
-Swift library for interfacing with the 23 Video API
+Swift library for interfacing with the [23 Video API](https://www.23video.com/api/).
 
 ## Usage
 
@@ -31,7 +30,7 @@ let visualAPI = VisualSwift(domain: "videos.23video.com", scheme: "https", crede
 
 ### Make requests
 
-Now you're ready to start making requests against the API by calling the `request()` method of your API object:
+Now you're ready to start making requests against the API by calling the `request()` method of your API object. Read the API documentation on [https://www.23video.com/api](https://www.23video.com/api) to get a list of available endpoints.
 
 ```swift
 // Simple request
