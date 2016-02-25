@@ -71,7 +71,7 @@ public class VisualSwift {
     
     public func request(endpoint: String, parameters: [String: String], method: String, useCache: Bool, callback: (Result<AnyObject, NSError>) -> Void) -> Void {
         var parametersDictionary: [String: String] = ["format": "json", "raw": "1"]
-        if !useCache || true {
+        if !useCache {
             parametersDictionary["_"] = String(Int(NSDate().timeIntervalSince1970))
         }
         for (key, value) in parameters {
@@ -101,17 +101,17 @@ public class VisualSwift {
         request(endpoint, parameters: parameters, method: method, useCache: true, callback: callback)
     }
     
-    public func uploadFile(endpoint: String, parameters: NSDictionary, fileURL: NSURL, progressCallback: (Double) -> Void) {
-        let parametersDictionary: NSMutableDictionary = ["format": "json", "raw": "1"]
-        for key in parameters.allKeys {
-            parametersDictionary[key as! String] = parameters.objectForKey(key)
+    public func uploadFile(endpoint: String, parameters: [String: String], fileURL: NSURL, progressCallback: (Double) -> Void, callback: (Result<AnyObject, NSError>) -> Void) {
+        var parametersDictionary: [String: String] = ["format": "json", "raw": "1"]
+        for (key, value) in parameters {
+            parametersDictionary[key] = value
         }
         Alamofire.upload(
             .POST,
             "\(scheme)://\(domain)\(endpoint)",
             multipartFormData: { multipartFormData in
                 for (key, value) in parametersDictionary {
-                    multipartFormData.appendBodyPart(data: String(value).dataUsingEncoding(NSUTF8StringEncoding)!, name: key as! String)
+                    multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
                 }
                 multipartFormData.appendBodyPart(fileURL: fileURL, name: "file")
             },
@@ -119,11 +119,11 @@ public class VisualSwift {
                 switch encodingResult {
                 case .Success(let upload, _, _):
                     upload.responseJSON { response in
-                        debugPrint(response)
-                        }.progress {
-                            bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
-                            let progress: Double = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-                            progressCallback(progress)
+                        callback(response.result)
+                    }.progress {
+                        bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
+                        let progress: Double = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+                        progressCallback(progress)
                     }
                 case .Failure(let encodingError):
                     print(encodingError)
