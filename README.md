@@ -4,16 +4,16 @@
 [![License](https://img.shields.io/cocoapods/l/VisualSwift.svg?style=flat)](http://cocoapods.org/pods/VisualSwift)
 [![Platform](https://img.shields.io/cocoapods/p/VisualSwift.svg?style=flat)](http://cocoapods.org/pods/VisualSwift)
 
-Swift library for interfacing with the [23 Video API](https://www.23video.com/api/).
+Swift library for interfacing with the [TwentyThree API](https://www.twentythree.net/api/).
 
 ## Usage
 
-After installation, import `VisualSwift` and init an API object with the domain and protocol of you 23 Video account:
+After installation, import `VisualSwift` and init an API object with the domain and protocol of you TwentyThree account:
 
 ```swift
 import VisualSwift
 
-let visualAPI = VisualSwift(domain: "videos.23video.com", scheme: "https")
+let visualAPI = VisualSwift(domain: "video.twentythree.net", scheme: "https")
 ```
 
 If you need authorized access and have obtained the required API credentials, include these as a third argument when initializing the API object:
@@ -25,12 +25,12 @@ let credentials = [
     "access_token": "<access token>",
     "access_token_secret": "<access token secret>"
 ]
-let visualAPI = VisualSwift(domain: "videos.23video.com", scheme: "https", credentials: credentials)
+let visualAPI = VisualSwift(domain: "video.twentythree.net", scheme: "https", credentials: credentials)
 ```
 
 ### Make requests
 
-Now you're ready to start making requests against the API by calling the `request()` method of your API object. Read the API documentation on [https://www.23video.com/api](https://www.23video.com/api) to get a list of available endpoints.
+Now you're ready to start making requests against the API by calling the `request()` method of your API object. Read the API documentation on [https://www.twentythree.net/api](https://www.twentythree.net/api) to get a list of available endpoints.
 
 ```swift
 // Simple request

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "VisualSwift"
-  s.version          = "0.1.2"
+  s.version          = "0.1.4"
   s.summary          = "Swift library for interfacing with the TwentyThree API"
   s.description      = <<-DESC
                        Swift library for interfacing with the TwentyThree API.
