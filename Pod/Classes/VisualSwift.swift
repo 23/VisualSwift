@@ -45,7 +45,7 @@ public class VisualSwift {
         
         let url = NSURL(string: urlString)!
         
-        let realm = "\(url.scheme)://\(url.host!)"
+        let realm = "\(url.scheme!)://\(url.host!)"
         let baseUrl = "\(realm)\(url.path!)"
         
         let escapedParameters = VisualSwiftUtils.sortedEncodedParameters(parameters)
